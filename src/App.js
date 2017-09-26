@@ -1,21 +1,38 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Search from 'Search'
 
-class App extends Component {
+
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      route: window.location.hash.substr(1)
+    }
+  }
+  componentDidMount() {
+    window.addEventListener('hashchange', () => {
+      this.setState({
+        route: window.location.hash.substr(1)
+      })
+    })
+  }
   render() {
+    let Child
+
+    switch (this.state.route) {
+      case '/search': Child = Search; break;
+      default: Child = Search;
+    }
+
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className='container'>
+        <h1>App</h1>
+        <ul>
+          <li><a href='#/Search'>Search</a></li>
+        </ul>
+        <Child />
       </div>
-    );
+    )
+
   }
 }
-
-export default App;
