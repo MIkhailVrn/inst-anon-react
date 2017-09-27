@@ -142,7 +142,7 @@ ReactDOM.render(
 
    function getStoriesArrayForUser (oControl)
    {
-     var sUrl = "http://inst-anon.herokuapp.com/userStories?userName=" + oControl.state.searchValue;
+     var sUrl = "https://inst-anon.herokuapp.com/userStories?userName=" + oControl.state.searchValue;
 
      $.ajax({
       url: sUrl,
