@@ -135,16 +135,16 @@ class MediaCarousel extends React.Component {
 ReactDOM.render(
  <Search/ >, document.getElementById('root'));
 
-  /* ------additional functions----- */
+   /* ------additional functions----- */
 
 
 
 
-  function getStoriesArrayForUser (oControl)
-  {
-    var sUrl = "http://inst-anon.herokuapp.com/userStories?userName=" + oControl.state.searchValue;
+   function getStoriesArrayForUser (oControl)
+   {
+     var sUrl = "http://inst-anon.herokuapp.com/userStories?userName=" + oControl.state.searchValue;
 
-    $.ajax({
+     $.ajax({
       url: sUrl,
       dataType: 'json',
       crossDoamin: true,
