@@ -19,8 +19,13 @@ export default class Search extends React.Component {
       searchValue: "",
       noDataVisible: false,
       noUserVisible: false,
-      isBusyVisible: false
+      isBusyVisible: false,
+      isPrivate: false
     }
+  }
+
+  componentDidMount() { 
+    document.title = "Inst Anon"
   }
 
   handleChange(event) {
@@ -33,7 +38,8 @@ export default class Search extends React.Component {
       carouselMedia: [],
       carouselVisible: true,
       noDataVisible: false,
-      isBusyVisible: true
+      isBusyVisible: true,
+      isPrivate: false
     });
 
     //refresh stories
@@ -55,7 +61,7 @@ export default class Search extends React.Component {
                 <Spinner name="ball-spin-fade-loader" />
               </div>
               <MediaCarousel media={this.state.carouselMedia} isVisible={this.state.carouselVisible} isNoDataVisible={this.state.noDataVisible}
-                             isNoUserVisible={this.state.noUserVisible}/>
+                             isNoUserVisible={this.state.noUserVisible} isPrivate={this.state.isPrivate}/>
             </div>
           </div>
         </div>
@@ -80,7 +86,7 @@ class SearchControl extends React.Component {
         <div className="col-md-4 col-md-offset-4">
           <FormControl className="searchInput" value={searchValue} onChange={this.onChange.bind(this)}/>
           <Button bsStyle="success" className="searchBtn" onClick={() => this.props.onSearch()}>
-            Search
+              Поиск
           </Button>
         </div>
       </div>
@@ -117,12 +123,14 @@ class MediaCarousel extends React.Component {
           </Carousel>
         </div>);
     } else {
-      var className = this.props.isNoDataVisible || this.props.isNoUserVisible ? 'active' : 'inactive';
+      var className = this.props.isNoDataVisible || this.props.isNoUserVisible || this.props.isPrivate ? 'active' : 'inactive';
       var text;
       if (this.props.isNoDataVisible){
-          text = "User doesn't have active stories";
+          text = "У Пользователя нет активных историй(";
       } else if (this.props.isNoUserVisible) {
-          text = "User doesn't exist";
+          text = "Такого пользователя не существует";
+      } else if (this.props.isPrivate) {
+          text = "Данный пользователь скрыл свой аккаунт. В настоящий момент возможность просмотра приватных аккаунтов находится в разработке...";
       };
       return (
         <div className={className}>
@@ -142,19 +150,25 @@ ReactDOM.render(
 
    function getStoriesArrayForUser (oControl)
    { 
-     var sUrl = "https://inst-anon.herokuapp.com/userStories?userName=" + oControl.state.searchValue.toLowerCase();
-     //var sUrl = "https://inst-anon3-mikhail36.c9users.io/userStories?userName=" + oControl.state.searchValue;
+     //var sUrl = "https://inst-anon.herokuapp.com/userStories?userName=" + oControl.state.searchValue.toLowerCase();
+     var sUrl = "https://inst-anon3-mikhail36.c9users.io/userStories?userName=" + oControl.state.searchValue;
 
      $.ajax({
       url: sUrl,
       dataType: 'json',
       crossDoamin: true,
       cache: false,
-      success: function(data) {
+      success: function(data, status, xhr) {
 
         oControl.setState({carouselMedia: data});
         if (data.length === 0){
-          oControl.setState({noDataVisible: true});
+          if (xhr.status === 202){ // is private
+            oControl.setState({noDataVisible: false});
+            oControl.setState({isPrivate: true});
+          } else {
+            oControl.setState({noDataVisible: true});
+            oControl.setState({isPrivate: false});
+          }
         } else {
           oControl.setState({noDataVisible: false});
         }
