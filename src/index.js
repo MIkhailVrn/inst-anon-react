@@ -150,8 +150,8 @@ ReactDOM.render(
 
    function getStoriesArrayForUser (oControl)
    { 
-     //var sUrl = "https://inst-anon.herokuapp.com/userStories?userName=" + oControl.state.searchValue.toLowerCase();
-     var sUrl = "https://inst-anon3-mikhail36.c9users.io/userStories?userName=" + oControl.state.searchValue;
+     var sUrl = "https://inst-anon.herokuapp.com/userStories?userName=" + oControl.state.searchValue.toLowerCase();
+     //var sUrl = "https://inst-anon3-mikhail36.c9users.io/userStories?userName=" + oControl.state.searchValue;
 
      $.ajax({
       url: sUrl,
