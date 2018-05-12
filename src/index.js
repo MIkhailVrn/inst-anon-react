@@ -53,7 +53,7 @@ export default class Search extends React.Component {
       <div>
         <div id="Search" className="container text-center appWrapper">
 
-          <a className="tgCont" href="t.me/inst_anon_bot" >
+          <a className="tgCont" href="https://t.me/inst_anon_bot" >
             <div className="tgInfo">
               <div className="tgLabel">Наш телеграм бот</div>    
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png" width="40" height="40"/>
