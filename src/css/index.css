@@ -76,3 +76,19 @@ body {
   width: 100%;
   margin-top: 50px;
 }
+
+.tgInfo {
+  margin-left: auto;
+  width: 200px;
+  display: flex;
+  padding: 10px;
+}
+
+.tgLabel {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.tgCont {
+  display: block;
+}
