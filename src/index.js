@@ -25,7 +25,7 @@ export default class Search extends React.Component {
   }
 
   componentDidMount() { 
-    document.title = "Inst Anon"
+    document.title = "Inst Anon";
   }
 
   handleChange(event) {
@@ -84,7 +84,7 @@ class SearchControl extends React.Component {
     return (
       <div className={this.props.classSearch}>
         <div className="col-md-4 col-md-offset-4">
-          <FormControl className="searchInput" value={searchValue} onChange={this.onChange.bind(this)}/>
+          <FormControl className="searchInput" value={searchValue} onChange={this.onChange.bind(this)} onEnter={() => this.props.onSearch()}/>
           <Button bsStyle="success" className="searchBtn" onClick={() => this.props.onSearch()}>
               Поиск
           </Button>
@@ -150,8 +150,10 @@ ReactDOM.render(
 
    function getStoriesArrayForUser (oControl)
    { 
-     var sUrl = "https://inst-anon.herokuapp.com/userStories?userName=" + oControl.state.searchValue.toLowerCase();
+     //var sUrl = "https://inst-anon.herokuapp.com/userStories?userName=" + oControl.state.searchValue.toLowerCase();
      //var sUrl = "https://inst-anon3-mikhail36.c9users.io/userStories?userName=" + oControl.state.searchValue;
+     var sUrl = "https://inst-anon3-mikhail36.c9users.io/userStories?userName=" + oControl.state.searchValue.toLowerCase();
+
 
      $.ajax({
       url: sUrl,

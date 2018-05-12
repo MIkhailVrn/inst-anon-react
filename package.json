@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dns": "^0.2.2",
     "jquery": "^3.2.1",
+    "module": "^1.2.5",
+    "mongodb": "^3.0.8",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",
