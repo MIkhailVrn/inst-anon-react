@@ -23,11 +23,11 @@ body {
 }
 
 .searchWrapperInitial {
-  margin: 50vh auto;
+  margin: 30vh auto;
 }
 
 .searchWrapperSearched {
-  margin-top: 20px;
+  margin-top: -50px;
   -webkit-transition: margin 0.4s linear;
   -moz-transition: margin 0.4s linear;
   -o-transition: margin 0.4s linear;
