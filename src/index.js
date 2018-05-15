@@ -48,7 +48,7 @@ export default class Search extends React.Component {
   }
 
   render() {
-    var busyIndicatorClass = "busyIndicator col-md-1 col-md-offset-5 " + (this.state.isBusyVisible ? 'active' : 'inactive');
+    var busyIndicatorClass = "busyIndicator col-md-1 col-md-offset-5 col-sm-1 col-sm-offset-5 " + (this.state.isBusyVisible ? 'busy-active' : 'inactive');
     return (
       <div>
         <div id="Search" className="container text-center appWrapper">
