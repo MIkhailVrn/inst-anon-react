@@ -2,6 +2,7 @@
   "name": "my-app2",
   "version": "0.1.0",
   "private": true,
+  "homepage":"mikhailvrn.github.io/inst-anon-react",
   "dependencies": {
     "dns": "^0.2.2",
     "jquery": "^3.2.1",
