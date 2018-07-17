@@ -67,6 +67,7 @@ body {
 
 .videoCarousel {
   max-width: 60%;
+  min-height: 400px;
 }
 
 .carouselItem {
